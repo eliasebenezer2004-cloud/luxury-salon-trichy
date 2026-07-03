@@ -37,7 +37,7 @@ export default function Navbar() {
   return (
     <header
       ref={navRef}
-      className="fixed top-0 left-0 z-40 w-full transition-transform duration-[0.4s] ease-[cubic-bezier(0.16,1,0.3,1)]"
+      className="fixed top-0 left-0 z-[60] w-full transition-transform duration-[0.4s] ease-[cubic-bezier(0.16,1,0.3,1)]"
       style={{
         height: 80,
         background: "rgba(250,249,246,0.6)",

@@ -43,7 +43,7 @@ export default function CustomCursor() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed z-[10000] -translate-x-1/2 -translate-y-1/2 rounded-full"
+      className="pointer-events-none fixed z-[9999] -translate-x-1/2 -translate-y-1/2 rounded-full"
       style={{
         left: springX,
         top: springY,

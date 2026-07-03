@@ -40,7 +40,7 @@ export default function TestimonialMarquee() {
   const items = Array(4).fill(MARQUEE_TEXT);
 
   return (
-    <div className="w-full overflow-hidden border-y border-[#E8E2D2] bg-[#F0EBE1] py-16">
+    <div className="w-full overflow-hidden border-y border-[#E8E2D2] bg-[#F0EBE1] py-24">
       <div
         ref={innerRef}
         className="marquee-track flex whitespace-nowrap"

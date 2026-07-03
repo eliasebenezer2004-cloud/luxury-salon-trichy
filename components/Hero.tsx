@@ -65,7 +65,7 @@ export default function Hero() {
         <source src="/models/hero-fluid-stone.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#FAF9F6]/20" />
-      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center px-4 text-center">
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center overflow-hidden px-4 text-center">
         <h1
           ref={titleRef}
           className="font-serif text-6xl font-light tracking-tight text-[#3E3A37] md:text-9xl"

@@ -148,7 +148,7 @@ function ArtisanCard({
 export default function AboutPage() {
   return (
     <main>
-      <section className="w-full bg-[#FAF9F6] py-12">
+      <section className="w-full bg-[#FAF9F6] py-16">
         <div className="px-4 text-center">
           <h2 className="font-serif text-4xl text-[#3E3A37] md:text-6xl">
             The Regional Sanctuary Hubs

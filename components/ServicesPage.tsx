@@ -155,7 +155,7 @@ function MenuRow({
     : "md:col-span-6 md:col-start-7";
 
   return (
-    <section className="w-full bg-[#FAF9F6] py-24">
+    <section className="w-full bg-[#FAF9F6] py-32">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-4 md:grid-cols-12">
         <div className={textCol}>
           <h3 className="font-serif text-2xl uppercase tracking-[0.15em] text-[#8A9A86] md:text-3xl">

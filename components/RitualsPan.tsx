@@ -47,6 +47,8 @@ export default function RitualsPan() {
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (window.matchMedia("(max-width: 767px)").matches) return;
+
     const ctx = gsap.context(() => {
       const panels = gsap.utils.toArray<HTMLElement>(".ritual-panel");
 
@@ -69,16 +71,16 @@ export default function RitualsPan() {
   return (
     <div
       ref={sectionRef}
-      className="relative h-screen w-full overflow-hidden bg-[#FAF9F6]"
+      className="relative w-full bg-[#FAF9F6] md:h-screen md:overflow-hidden"
     >
       <div
         ref={trackRef}
-        className="flex h-screen w-[400vw] flex-row"
+        className="flex flex-col md:h-screen md:w-[400vw] md:flex-row"
       >
         {rituals.map((ritual, i) => (
           <div
             key={i}
-            className="ritual-panel group relative flex h-screen w-screen flex-shrink-0 items-center justify-center overflow-hidden"
+            className="ritual-panel group relative flex min-h-[80vh] w-full flex-shrink-0 items-center justify-center overflow-hidden md:h-screen md:w-screen"
           >
             {ritual.type === "video" ? (
               <video
