@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="80" viewBox="0 0 280 80">
+  <rect width="280" height="80" fill="#1B2845"/>
+  <g fill="#C4A265">
+    <path d="M30 10c-2 8-8 18-18 28 6-2 12-2 18 0-4 6-10 14-16 22 4-1 8-1 12 0-2 4-4 8-6 12 4-1 8-1 12 0-6-10-10-20-12-30 2 6 4 12 8 16 0-8-2-16-6-24 4 4 6 10 8 16 2-8 2-18 0-28-2 6-4 12-8 16 2-4 4-8 6-12" opacity="0.9"/>
+    <circle cx="30" cy="8" r="4"/>
+  </g>
+  <text x="60" y="40" font-family="Georgia, serif" font-size="28" font-weight="400" letter-spacing="6" fill="#C4A265">AURELIA</text>
+  <text x="60" y="58" font-family="Georgia, serif" font-size="12" font-weight="400" letter-spacing="4" fill="#C4A265" opacity="0.8">SPA &amp; SALON</text>
+</svg>
