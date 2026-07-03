@@ -16,9 +16,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Lumina — Trichy Sanctuary",
+  title: "Aurelia Spa & Salon — Trichy",
   description:
-    "A Trichy sanctuary reimagined in 3D. Luxury salon & spa experience above Zazzle & POSH.",
+    "Experience true elegance at Aurelia Spa & Salon. A luxury salon and spa destination in Trichy.",
 };
 
 export default function RootLayout({

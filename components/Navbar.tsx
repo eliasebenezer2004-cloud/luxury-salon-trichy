@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -25,14 +26,19 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <span className="font-serif text-lg tracking-[0.2em] text-foreground/90">
-          LUMINA
-        </span>
+        <Image
+          src="/logo.png"
+          alt="Aurelia Spa & Salon"
+          width={140}
+          height={40}
+          className="h-10 w-auto"
+          priority
+        />
         <Button
           variant="outline"
-          className="rounded-full border-foreground/20 px-6 text-xs tracking-widest uppercase hover:bg-foreground hover:text-background"
+          className="rounded-full border-gold/30 px-6 text-xs tracking-widest uppercase text-gold hover:bg-gold hover:text-background"
         >
-          Book Sanctuary
+          Book Appointment
         </Button>
       </div>
     </nav>

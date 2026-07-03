@@ -18,12 +18,12 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         <h1 className="font-serif text-5xl leading-tight tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
-          A Trichy Sanctuary
+          Experience True Elegance
           <br />
-          Reimagined in 3D.
+          <span className="text-gold">at Aurelia Spa &amp; Salon.</span>
         </h1>
-        <p className="mt-6 text-sm tracking-[0.3em] text-foreground/60 uppercase sm:text-base">
-          Setting the new standard above Zazzle & POSH.
+        <p className="mt-6 text-sm tracking-[0.3em] text-muted-foreground uppercase sm:text-base">
+          A sanctuary of beauty in the heart of Trichy.
         </p>
       </div>
     </section>
