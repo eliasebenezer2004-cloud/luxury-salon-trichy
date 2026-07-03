@@ -1,113 +1,80 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MagneticWrapper } from "@/components/ui/MagneticWrapper";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const ease = [0.83, 0, 0.17, 1] as const;
+gsap.registerPlugin(ScrollTrigger);
 
-const headlineVariants = {
-  hidden: { opacity: 0, y: 80 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 1.2, ease },
-  },
-};
+export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
-const subtitleVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 1, ease, delay: 0.3 },
-  },
-};
+  useEffect(() => {
+    if (!titleRef.current || !videoRef.current) return;
 
-const taglineVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease, delay: 0.6 },
-  },
-};
+    const text = titleRef.current.innerText;
+    titleRef.current.innerHTML = text
+      .split("")
+      .map((char) =>
+        char === " "
+          ? `<span class="inline-block">&nbsp;</span>`
+          : `<span class="inline-block letter">${char}</span>`
+      )
+      .join("");
 
-export function Hero() {
+    const letters = titleRef.current.querySelectorAll(".letter");
+
+    gsap.fromTo(
+      letters,
+      { opacity: 0, y: 80, filter: "blur(12px)" },
+      {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        stagger: 0.04,
+        duration: 1.6,
+        ease: "cubic-bezier(0.16, 1, 0.3, 1)",
+      }
+    );
+
+    gsap.to(videoRef.current, {
+      scale: 1.15,
+      scrollTrigger: {
+        trigger: "#hero-container",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  }, []);
+
   return (
-    <section className="relative flex h-dvh w-full items-center justify-center overflow-hidden">
-      <motion.div
-        className="absolute inset-0"
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 2, ease }}
+    <section
+      id="hero-container"
+      className="relative h-screen w-full overflow-hidden bg-[#FAF9F6]"
+    >
+      <video
+        ref={videoRef}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-multiply"
       >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="h-full w-full object-cover opacity-40"
-          poster="/hero-poster.jpg"
+        <source src="/models/hero-fluid-stone.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#FAF9F6]/20" />
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center px-4 text-center">
+        <h1
+          ref={titleRef}
+          className="font-serif text-6xl font-light tracking-tight text-[#3E3A37] md:text-9xl"
         >
-          <source src="/video/hero-bg.mp4" type="video/mp4" />
-        </video>
-      </motion.div>
-
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
-
-      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
-        <motion.p
-          variants={taglineVariants}
-          initial="hidden"
-          animate="visible"
-          className="font-mono mb-8 text-xs tracking-[0.4em] text-gold uppercase"
-        >
-          Aurelia Spa & Salon
-        </motion.p>
-
-        <motion.h1
-          variants={headlineVariants}
-          initial="hidden"
-          animate="visible"
-          className="font-serif text-5xl leading-tight tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl"
-        >
-          Experience True Elegance
-          <br />
-          <span className="text-gold">at Aurelia Spa &amp; Salon.</span>
-        </motion.h1>
-
-        <motion.p
-          variants={subtitleVariants}
-          initial="hidden"
-          animate="visible"
-          className="mt-8 text-sm tracking-[0.3em] text-muted-foreground uppercase sm:text-base"
-        >
-          A sanctuary of beauty in the heart of Trichy.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease, delay: 1 }}
-          className="mt-10"
-        >
-          <MagneticWrapper>
-            <button
-              type="button"
-              className="rounded-full border border-gold/40 px-10 py-3 font-mono text-xs tracking-[0.3em] uppercase text-gold transition-colors duration-500 hover:bg-gold hover:text-[#1B2845]"
-            >
-              Book Your Visit
-            </button>
-          </MagneticWrapper>
-        </motion.div>
-      </div>
-
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="h-12 w-px bg-gradient-to-b from-gold/60 to-transparent"
-        />
+          Breathe. Restore. Evolve.
+        </h1>
+        <p className="mt-8 font-sans text-sm uppercase tracking-[0.3em] text-[#6E6863] md:text-base">
+          Your private sanctuary in the heart of Trichy
+        </p>
       </div>
     </section>
   );

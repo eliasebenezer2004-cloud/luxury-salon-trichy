@@ -1,15 +1,15 @@
-import { Hero } from "@/components/Hero";
-import { Navbar } from "@/components/Navbar";
-import { ServicesPreview } from "@/components/ServicesPreview";
+import Hero from "@/components/Hero";
+import PhilosophyBlock from "@/components/PhilosophyBlock";
+import RitualsPan from "@/components/RitualsPan";
+import TestimonialMarquee from "@/components/TestimonialMarquee";
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <ServicesPreview />
-      </main>
-    </>
+    <main>
+      <Hero />
+      <PhilosophyBlock />
+      <RitualsPan />
+      <TestimonialMarquee />
+    </main>
   );
 }

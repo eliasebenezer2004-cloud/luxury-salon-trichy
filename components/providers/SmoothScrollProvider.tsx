@@ -1,20 +1,34 @@
 "use client";
 
-import { ReactLenis } from "lenis/react";
-import type { ReactNode } from "react";
+import { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
 
-export function SmoothScrollProvider({ children }: { children: ReactNode }) {
-  return (
-    <ReactLenis
-      root
-      options={{
-        lerp: 0.05,
-        smoothWheel: true,
-        wheelMultiplier: 1,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      }}
-    >
-      {children}
-    </ReactLenis>
-  );
+export function SmoothScrollProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.4,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 0.95,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  return <>{children}</>;
 }
