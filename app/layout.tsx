@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Aurelia Spa & Salon | Sanctuary Trichy",
@@ -23,7 +24,12 @@ export default function RootLayout({
       </head>
       <body>
         <div className="grain-overlay" />
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScrollProvider>
+          <div className="relative z-10 bg-[#FAF9F6] mb-[100vh]">
+            {children}
+          </div>
+        </SmoothScrollProvider>
+        <Footer />
       </body>
     </html>
   );
